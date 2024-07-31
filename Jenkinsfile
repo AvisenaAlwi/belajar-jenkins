@@ -49,10 +49,10 @@ pipeline {
             deleteDir()
         }
         success {
-            echo 'success bro'
+            echo 'success bro dari jenkins training branch'
         }
         failure {
-            echo 'Failure bro'
+            echo 'Failure bro dari jenkins training branch'
         }
     }
 }
