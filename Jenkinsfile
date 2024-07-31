@@ -46,7 +46,6 @@ pipeline {
         always {
             echo 'Cleaning up...'
             // Add any cleanup steps here
-            deleteDir()
         }
         success {
             echo 'success bro dari jenkins training branch'
