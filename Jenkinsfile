@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch to build')
-        choice(name: 'BUILD_ENV', choices: ['development', 'staging', 'production'], description: 'Environment to build')
+        choice(name: 'BUILD_ENV', choices: ['development', 'training', 'production'], description: 'Environment to build')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests after build')
     }
 
@@ -23,6 +23,7 @@ pipeline {
             }
         }
         stage('Test') {
+            // Test hanya akan dijalankan jika param RUN_TEST dicentang atau true
             when {
                 expression { return params.RUN_TESTS }
             }
@@ -46,6 +47,12 @@ pipeline {
             echo 'Cleaning up...'
             // Add any cleanup steps here
             deleteDir()
+        }
+        success {
+            echo 'success bro'
+        }
+        failure {
+            echo 'Failure bro'
         }
     }
 }
